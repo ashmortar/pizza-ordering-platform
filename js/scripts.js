@@ -1,7 +1,8 @@
 //CONSTRUCTORS AND PROTOTYPES ---------------------------------
 
-function Pizza(size) {
+function Pizza(size, toppings) {
   this.size = size;
+  this.toppings = toppings;
 }
 
 
