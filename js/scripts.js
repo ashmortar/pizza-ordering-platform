@@ -1,9 +1,18 @@
 //CONSTRUCTORS AND PROTOTYPES ---------------------------------
+function Order() {
+  this.item = [];
+}
+
 
 function Pizza(size, toppings) {
   this.size = size;
   this.toppings = toppings;
   this.price = 0.00;
+}
+
+
+Order.prototype.addItem = function(size, toppings) {
+  this.item.push(new Pizza(size, toppings));
 }
 
 Pizza.prototype.cost = function() {
