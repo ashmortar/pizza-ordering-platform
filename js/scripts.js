@@ -50,19 +50,8 @@ Pizza.prototype.cost = function() {
   }
   console.log("cost: $" + this.price);
 }
-
-
 //LOOSE HELPER FUNCTIONS ---------------------------------------
 
-
-
-
-
 //GLOBAL VARIABLES ---------------------------------------------
-
-
-
-
-
 
 //FRONT END BELOW THIS LINE ------------------------------------
