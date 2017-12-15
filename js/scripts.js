@@ -1,6 +1,7 @@
 //CONSTRUCTORS AND PROTOTYPES ---------------------------------
 function Order() {
   this.item = [];
+  this.total = 0;
 }
 
 
@@ -13,6 +14,14 @@ function Pizza(size, toppings) {
 
 Order.prototype.addItem = function(size, toppings) {
   this.item.push(new Pizza(size, toppings));
+}
+
+Order.prototype.getTotal = function() {
+  for (var j = 0; j < this.item.length; j++) {
+    this.item[j].cost();
+    this.total += this.item[j].price;
+  }
+  console.log("Total: $" + this.total);
 }
 
 Pizza.prototype.cost = function() {
