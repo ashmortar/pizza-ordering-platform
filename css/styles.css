@@ -45,3 +45,28 @@ footer p {
   font-size: 15px;
   text-shadow: black 1px 0 10px;
 }
+
+.panel {
+  background-color: #f76a62;
+  color: white;
+  position: relative;
+  top: 20vw;
+  left: 20%;
+  width: 60%;
+  border: medium dotted white;;
+  padding: 40px;
+}
+
+.radio-inline {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+#begin-order {
+  background-color: white;
+  color: #f76a62;
+  margin-top: 40px;
+  font-weight: 600;
+  width: 20vw;
+  font-size: 2vw;
+}
