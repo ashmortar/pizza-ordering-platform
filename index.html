@@ -14,21 +14,45 @@
       <h1>ORDER PIZZA ONLINE</h1>
     </header>
     <div class="container">
-      <div class="delivery">
-        <div class="panel">
-          <div class="panel-header">
-            <h2>IS THIS ORDER FOR:</h2>
-          </div>
-          <div class="panel-body">
-            <label class="radio-inline">
-              <input type="radio" name="delivery" value="delivery" checked> Delivery
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="delivery" value="Pick-Up" checked> Pick-Up
-            </label>
-            <br>
-            <span class="btn" id="begin-order">BEGIN ORDER</span>
-          </div>
+      <div class="panel" id="delivery-panel">
+        <div class="panel-header">
+          <h2>IS THIS ORDER FOR:</h2>
+        </div>
+        <div class="panel-body">
+          <label class="radio-inline">
+            <input type="radio" name="delivery" value="delivery"> Delivery
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="delivery" value="Pick-Up" checked> Pick-Up
+          </label>
+          <br>
+          <span class="btn" id="begin-order">BEGIN ORDER</span>
+        </div>
+      </div>
+      <div class="panel" id="address-panel">
+        <div class="panel-header">
+          <h2>PLEASE ENTER YOUR ADDRESS</h2>
+        </div>
+        <div class="panel-body">
+          <form id="address-form">
+            <div class="form-group">
+              <label for="new-street">Street</label>
+              <input type="text" class="form-control" value="123 Eat St" required>
+            </div>
+            <div class="form-group">
+              <label for="new-city">City</label>
+              <input type="text" class="form-control" value="Pizza Town" required>
+            </div>
+            <div class="form-group">
+              <label for="new-state">State</label>
+              <input type="text" class="form-control" value="Pepperoni" required>
+            </div>
+            <div class="form-group">
+              <label for="new-state">Postal Code</label>
+              <input type="text" class="form-control" value="12345" required>
+            </div>
+            <button class="btn" type="submit" id="begin-order">GET PIZZA</button>
+          </form>
         </div>
       </div>
     </div>

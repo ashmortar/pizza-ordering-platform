@@ -53,5 +53,35 @@ Pizza.prototype.cost = function() {
 //LOOSE HELPER FUNCTIONS ---------------------------------------
 
 //GLOBAL VARIABLES ---------------------------------------------
-
+var address;
+var order;
 //FRONT END BELOW THIS LINE ------------------------------------
+$(document).ready(function() {
+
+    //this will hide the #delivery-panel and show either the address form or the order information
+    $("#begin-order").click(function() {
+      if ($("input:radio[name=delivery]:checked").val() === "Pick-Up") {
+        alert("you haven't built this yet")
+      } else if ($("input:radio[name=delivery]:checked").val() === "delivery") {
+        $("#delivery-panel").hide();
+        $("#address-panel").fadeIn("slow");
+      }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
