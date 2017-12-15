@@ -1,9 +1,16 @@
 //CONSTRUCTORS AND PROTOTYPES ---------------------------------
+function Address(street, city, state, zip) {
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.zip = zip;
+}
+
 function Order() {
   this.item = [];
   this.total = 0;
+  this.address = [];
 }
-
 
 function Pizza(size, toppings) {
   this.size = size;
@@ -14,6 +21,10 @@ function Pizza(size, toppings) {
 
 Order.prototype.addItem = function(size, toppings) {
   this.item.push(new Pizza(size, toppings));
+}
+
+Order.prototype.addAddress = function(street, city, state, zip) {
+  this.address.push(new Address(street, city, state, zip))
 }
 
 Order.prototype.getTotal = function() {
