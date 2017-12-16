@@ -13,20 +13,19 @@
       <img src="img/pizza-logo.png" id="logo" alt="pizza-logo">
       <h1>ORDER PIZZA ONLINE</h1>
     </header>
-    <div class="container">
       <div class="panel" id="delivery-panel">
         <div class="panel-header">
           <h2>IS THIS ORDER FOR:</h2>
         </div>
         <div class="panel-body">
           <label class="radio-inline">
-            <input type="radio" name="delivery" value="delivery"> Delivery
+            <input type="radio" name="delivery" value="delivery"> DELIVERY
           </label>
           <label class="radio-inline">
-            <input type="radio" name="delivery" value="Pick-Up" checked> Pick-Up
+            <input type="radio" name="delivery" value="Pick-Up" checked> PICK-UP
           </label>
           <br>
-          <span class="btn" id="begin-order">BEGIN ORDER</span>
+          <span class="btn button" id="begin-order">BEGIN ORDER</span>
         </div>
       </div>
       <div class="panel" id="address-panel">
@@ -36,26 +35,147 @@
         <div class="panel-body">
           <form id="address-form">
             <div class="form-group">
-              <label for="new-street">Street</label>
-              <input type="text" class="form-control" value="123 Eat St" required>
+              <label for="street">STREET:</label>
+              <input id="street" type="text" class="form-control" value="123 Eat St" required>
             </div>
             <div class="form-group">
-              <label for="new-city">City</label>
-              <input type="text" class="form-control" value="Pizza Town" required>
+              <label for="city">CITY:</label>
+              <input id="city" type="text" class="form-control" value="Pizza Town" required>
             </div>
             <div class="form-group">
-              <label for="new-state">State</label>
-              <input type="text" class="form-control" value="Pepperoni" required>
+              <label for="state">STATE:</label>
+              <input id="state" type="text" class="form-control" value="Pepperoni" required>
             </div>
             <div class="form-group">
-              <label for="new-state">Postal Code</label>
-              <input type="text" class="form-control" value="12345" required>
+              <label for="zip">POSTAL CODE:</label>
+              <input id="zip" type="text" class="form-control" value="12345" required>
             </div>
-            <button class="btn" type="submit" id="begin-order">GET PIZZA</button>
+            <button class="btn button" type="submit" id="add-address">GET PIZZA</button>
           </form>
         </div>
       </div>
-    </div>
+      <div class="well" id="order-panel">
+        <h3>BUILD YOUR ORDER</h3>
+        <hr>
+        <form id="order-form">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>SIZE:</h4>
+              <label class="radio-inline">
+                <input type="radio" name="pizza-size" value="small"> SMALL
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pizza-size" value="medium" checked> MEDIUM
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pizza-size" value="large"> LARGE
+              </label>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <h4>TOPPINGS:</h4>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="pepperoni">
+                    PEPPERONI
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="sausage">
+                    SAUSAGE
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="anchovies">
+                    ANCHOVIES
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="black olives">
+                    BLACK OLIVES
+                  </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="mushrooms">
+                    MUSHROOMS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="red onions">
+                    RED ONIONS
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="jalepenos">
+                    JALEPENOS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="extra sauce">
+                    EXTRA SAUCE
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="topping" value="extra cheese">
+                    EXTRA CHEESE
+                </label>
+              </div>
+            </div>
+          </div>
+          <button class="btn button" type="submit" id="add-pizza">ADD PIE</button>
+          <hr>
+          <div class="pizzas">
+          </div>
+          <hr>
+          <button class="btn button" id="finish-order">FINISH ORDER</button>
+        </form>
+      </div>
+      <div class-"well" id="complete-panel">
+        <h3>THANKS FOR YOUR ORDER</h3>
+        <hr>
+        <h4>TO CONFIRM YOU ORDERED:</h4>
+        <div class="row">
+          <div class="col-sm-10">
+            <ol class="ordered-pizzas">
+
+            </ol>
+          </div>
+          <div class="col-sm-2">
+            <ul style="list-style:none" class="pizza-cost">
+
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+          </div>
+          <div class="col-sm-4">
+            <h3>TOTAL:</h3>
+            <p><span id="total"></span></p>
+          </div>
+        </div>
+        <div class="row" id="delivery-address-display">
+          <div class="col-sm-12">
+            <h4>THIS ORDER WILL BE DELIVERED TO:</h4>
+            <p><span id="show-street"></span></p>
+            <p><span id="show-city"></span>, <span id="show-state"></span> <span id="show-zip"></span></p>
+          </div>
+        </div>
+      </div>
     <footer>
       <p>Created By: Aaron Ross</p>
       <p>Contact information: <a href="mailto:ashmortar@gmail.com">ashmortar@gmail.com</a>.</p>

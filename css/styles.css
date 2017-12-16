@@ -46,7 +46,18 @@ footer p {
   text-shadow: black 1px 0 10px;
 }
 
-.panel {
+#delivery-panel{
+  background-color: #f76a62;
+  color: white;
+  position: relative;
+  top: 20vw;
+  left: 20%;
+  width: 60%;
+  border: medium dotted white;;
+  padding: 40px;
+}
+
+#address-panel{
   background-color: #f76a62;
   color: white;
   position: relative;
@@ -62,7 +73,7 @@ footer p {
   font-size: 15px;
 }
 
-#begin-order {
+.button {
   background-color: white;
   color: #f76a62;
   margin-top: 40px;
@@ -73,4 +84,59 @@ footer p {
 
 #address-panel {
   display: none;
+}
+
+#order-panel {
+  display: none;
+}
+
+#complete-panel {
+  display: none;
+}
+
+#delivery-address-display {
+  display: none;
+}
+
+#order-panel {
+  background-color: #f76a62;
+  color: white;
+  position: relative;
+  top: 16vw;
+  left: 5%;
+  width: 90%;
+  border: medium dotted white;
+  padding-top: 0;
+}
+
+#complete-panel {
+  background-color: #f76a62;
+  color: white;
+  position: relative;
+  top: 16vw;
+  left: 5%;
+  width: 90%;
+  border: medium dotted white;
+  padding-top: 0;
+}
+
+.checkbox {
+  text-align: left;
+  margin-left: 30%;
+}
+
+.ordered-pizzas {
+  font-size: 15px;
+  text-align: left;
+}
+
+.pizza-cost {
+  font-size: 15px;
+  text-align: right;
+  padding-right: 25px;
+}
+#total {
+  font-size: 35px;
+  text-align: right;
+    padding-right: 25px;
 }

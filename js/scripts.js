@@ -52,24 +52,70 @@ Pizza.prototype.cost = function() {
 }
 //LOOSE HELPER FUNCTIONS ---------------------------------------
 
+
 //GLOBAL VARIABLES ---------------------------------------------
-var address;
-var order;
+var order = new Order();
+pizzaCount = 0;
 //FRONT END BELOW THIS LINE ------------------------------------
 $(document).ready(function() {
 
-    //this will hide the #delivery-panel and show either the address form or the order information
-    $("#begin-order").click(function() {
-      if ($("input:radio[name=delivery]:checked").val() === "Pick-Up") {
-        alert("you haven't built this yet")
-      } else if ($("input:radio[name=delivery]:checked").val() === "delivery") {
-        $("#delivery-panel").hide();
-        $("#address-panel").fadeIn("slow");
-      }
+  //this will hide the #delivery-panel and show either the address form or the order information
+  $("#begin-order").click(function() {
+    if ($("input:radio[name=delivery]:checked").val() === "Pick-Up") {
+      $("#delivery-panel").hide();
+      $("#order-panel").fadeIn("slow");
+    } else if ($("input:radio[name=delivery]:checked").val() === "delivery") {
+      $("#delivery-panel").hide();
+      $("#address-panel").fadeIn("slow");
+    }
+  })
+
+  //this will save the address to the globall address variable then move on to ordering
+  $("form#address-form").submit(function(event) {
+    event.preventDefault();
+    var street = $("#street").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var zip = $("#zip").val();
+    order.addAddress(street, city, state, zip);
+    $("#address-panel").hide();
+    $("#order-panel").fadeIn("slow");
+  })
+  
+  //this will add a pizza to the order and display that pizza below the add pie button
+  $("form#order-form").submit(function(event) {
+    event.preventDefault();
+    var size = $("input:radio[name=pizza-size]:checked").val();
+    var toppings = [];
+    $("input:checkbox[name=topping]:checked").each(function() {
+      toppings.push($(this).val());
     })
+    order.addItem(size, toppings);
+    $(".pizzas").append('<span>' + (pizzaCount + 1) + '.) ' + order.item[pizzaCount].size + ' pizza with ' + order.item[pizzaCount].toppings.join(", ") + '</span><br>')
+    pizzaCount++;
+    $("input:checkbox[name=topping]:checked").each(function() {
+      $(this).prop("checked", false);
+    })
+  })
 
-
-
+  //this will complete the order, hide the order-form and display the pizzas ordered, their cost, the total pice and the delivery address if applicable
+  $("#finish-order").click(function() {
+    $("#order-panel").hide();
+    $("#complete-panel").fadeIn();
+    order.getTotal();
+    for (var m = 0; m < order.item.length; m++) {
+      $(".ordered-pizzas").append('<li>' + order.item[m].size + ' pizza with ' + order.item[m].toppings.join(", ") + '</li>')
+      $(".pizza-cost").append('<li>$' + order.item[m].price + '</li>')
+    }
+    $("#total").text('$' + order.total);
+    if (order.address.length === 1) {
+      $("#delivery-address-display").show();
+      $("#show-street").text(order.address[0].street);
+      $("#show-city").text(order.address[0].city);
+      $("#show-state").text(order.address[0].state);
+      $("#show-zip").text(order.address[0].zip);
+    }
+  })
 
 
 
