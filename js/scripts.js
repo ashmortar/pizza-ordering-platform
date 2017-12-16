@@ -81,7 +81,7 @@ $(document).ready(function() {
     $("#address-panel").hide();
     $("#order-panel").fadeIn("slow");
   })
-  
+
   //this will add a pizza to the order and display that pizza below the add pie button
   $("form#order-form").submit(function(event) {
     event.preventDefault();
@@ -105,9 +105,9 @@ $(document).ready(function() {
     order.getTotal();
     for (var m = 0; m < order.item.length; m++) {
       $(".ordered-pizzas").append('<li>' + order.item[m].size + ' pizza with ' + order.item[m].toppings.join(", ") + '</li>')
-      $(".pizza-cost").append('<li>$' + order.item[m].price + '</li>')
+      $(".pizza-cost").append('<li>$' + order.item[m].price.toFixed(2) + '</li>')
     }
-    $("#total").text('$' + order.total);
+    $("#total").text('$' + order.total.toFixed(2));
     if (order.address.length === 1) {
       $("#delivery-address-display").show();
       $("#show-street").text(order.address[0].street);
