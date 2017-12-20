@@ -85,6 +85,7 @@ $(document).ready(function() {
   //this will add a pizza to the order and display that pizza below the add pie button
   $("form#order-form").submit(function(event) {
     event.preventDefault();
+    $("#finish-order").prop("disabled", false);
     var size = $("input:radio[name=pizza-size]:checked").val();
     var toppings = [];
     $("input:checkbox[name=topping]:checked").each(function() {
@@ -100,20 +101,44 @@ $(document).ready(function() {
 
   //this will complete the order, hide the order-form and display the pizzas ordered, their cost, the total pice and the delivery address if applicable
   $("#finish-order").click(function() {
-    $("#order-panel").hide();
-    $("#complete-panel").fadeIn();
-    order.getTotal();
-    for (var m = 0; m < order.item.length; m++) {
-      $(".ordered-pizzas").append('<li>' + order.item[m].size + ' pizza with ' + order.item[m].toppings.join(", ") + '</li>')
-      $(".pizza-cost").append('<li>$' + order.item[m].price.toFixed(2) + '</li>')
-    }
-    $("#total").text('$' + order.total.toFixed(2));
-    if (order.address.length === 1) {
-      $("#delivery-address-display").show();
-      $("#show-street").text(order.address[0].street);
-      $("#show-city").text(order.address[0].city);
-      $("#show-state").text(order.address[0].state);
-      $("#show-zip").text(order.address[0].zip);
+    if ($("input:checkbox[name=topping]:checked") === undefined) {
+      $("#order-panel").hide();
+      $("#complete-panel").fadeIn();
+      order.getTotal();
+      for (var m = 0; m < order.item.length; m++) {
+        $(".ordered-pizzas").append('<li>' + order.item[m].size + ' pizza with ' + order.item[m].toppings.join(", ") + '</li>')
+        $(".pizza-cost").append('<li>$' + order.item[m].price.toFixed(2) + '</li>')
+      }
+      $("#total").text('$' + order.total.toFixed(2));
+      if (order.address.length === 1) {
+        $("#delivery-address-display").show();
+        $("#show-street").text(order.address[0].street);
+        $("#show-city").text(order.address[0].city);
+        $("#show-state").text(order.address[0].state);
+        $("#show-zip").text(order.address[0].zip);
+      }
+    } else {
+      var addPizzaPrompt = confirm("It looks like you chose toppings but didn't add the pizza, did you want to add that pizza?")
+      console.log(addPizzaPrompt);
+      if (addPizzaPrompt === true) {
+        console.log("pizza");
+      } else {
+        $("#order-panel").hide();
+        $("#complete-panel").fadeIn();
+        order.getTotal();
+        for (var m = 0; m < order.item.length; m++) {
+          $(".ordered-pizzas").append('<li>' + order.item[m].size + ' pizza with ' + order.item[m].toppings.join(", ") + '</li>')
+          $(".pizza-cost").append('<li>$' + order.item[m].price.toFixed(2) + '</li>')
+        }
+        $("#total").text('$' + order.total.toFixed(2));
+        if (order.address.length === 1) {
+          $("#delivery-address-display").show();
+          $("#show-street").text(order.address[0].street);
+          $("#show-city").text(order.address[0].city);
+          $("#show-state").text(order.address[0].state);
+          $("#show-zip").text(order.address[0].zip);
+        }
+      }
     }
   })
 
